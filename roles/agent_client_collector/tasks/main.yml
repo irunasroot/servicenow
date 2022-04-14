@@ -1,0 +1,32 @@
+- block:
+    - name: "Checking for current ACC installation"
+      stat:
+        path: "/usr/share/servicenow/agent-client-collector/bin/acc"
+        get_checksum: false
+      changed_when: false
+      register: acc_bin
+
+    - name: "Getting current ACC version"
+      command: "/usr/share/servicenow/agent-client-collector/bin/acc version"
+      changed_when: false
+      register: current_acc_install
+      when: acc_bin.stat.exists
+
+    - name: "Uninstall ACC agent if incorrect version is installed"
+      include_role:
+        name: "agent_client_collector/uninstall"
+      when: current_acc_install.stdout is defined and (current_acc_install.stdout | regex_search('(\\d+\\.\\d+\\.\\d+)') is not version(agent_client_collector.version, '='))
+  when: force_uninstall_on_upgrade and ansible_system in ['Linux', 'Darwin']
+
+- name: "Installing ACC v{{ agent_client_collector.version }}"
+  include_role:
+    name: "agent_client_collector/install"
+
+- name: "Creating ACC Configuration Files"
+  include_role:
+    name: "agent_client_collector/configuration"
+
+- name: "Restarting ACC Agent"
+  include_role:
+    name: "agent_client_collector/restart"
+  when: restart_agent_after_config_changes and config_files_have_changed

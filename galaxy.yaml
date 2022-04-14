@@ -1,0 +1,19 @@
+namespace: "irunasroot"
+name: "servicenow"
+version: "1.0.0"
+readme: "README.md"
+authors:
+  - "Dennis Whitney (https://github.com/minsis)"
+description: "Ansible collection of various roles, plugins, modules, etc that help manage ServiceNow"
+license:
+  - "GPL-3.0-or-later"
+license_file: "LICENSE.txt"
+tags:
+  - "Snow"
+  - "ServiceNow"
+  - "ACC"
+  - "Agent Client Collector"
+repository: "https://github.com/irunasroot/servicenow"
+documentation: "https://github.com/irunasroot/servicenow/wiki"
+homepage: "https://github.com/irunasroot/servicenow"
+issues: "https://github.com/irunasroot/servicenow/issues"

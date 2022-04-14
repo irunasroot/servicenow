@@ -1,0 +1,2 @@
+- name: "Restart ACC Agent"
+  include_tasks: "{{ ansible_system }}.yaml"

@@ -1,0 +1,18 @@
+- name: "Generate acc.yml Configuration File"
+  template:
+    src: "acc.yml.j2"
+    dest: "{{ acc_yaml_file_path }}"
+    newline_sequence: "{{ default_newline_sequence }}"
+  register: acc_yaml_status
+
+- name: "Generate check-allow-list.json Configuration File"
+  template:
+    src: "check-allow-list.json.j2"
+    dest: "{{ check_allow_list_json_file_path }}"
+    newline_sequence: "{{ default_newline_sequence }}"
+  register: allow_list_status
+
+- name: "Checking if config files changed"
+  set_fact:
+    config_files_have_changed: "{{ acc_yaml_status.changed or allow_list_status.changed }}"
+  changed_when: false

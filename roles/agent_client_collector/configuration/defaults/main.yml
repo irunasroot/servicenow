@@ -1,0 +1,9 @@
+default_path_seperator: "{% if ansible_system == 'Win32NT' %}\\{% else %}/{% endif %}"
+default_newline_sequence: "{% if ansible_system == 'Win32NT' %}\\r\\n{% else %}\\n{% endif %}"
+
+default_etc_path: "{% if ansible_system == 'Win32NT' %}C:\\{{ default_path_seperator.join(['ProgramData', 'ServiceNow', 'agent-client-collector']) }}{% else %}/{{ default_path_seperator.join(['etc', 'servicenow', 'agent-client-collector']) }}{% endif %}"
+default_config_directory: "{% if ansible_system == 'Win32NT' %}config{% else %}{% endif %}"
+default_config_path: "{{ default_path_seperator.join([default_etc_path, default_config_directory]) }}"
+
+acc_yaml_file_path: "{{ default_path_seperator.join([default_config_path, 'acc.yml']) }}"
+check_allow_list_json_file_path: "{{ default_path_seperator.join([default_config_path, 'check-allow-list.json']) }}"

@@ -1,0 +1,4 @@
+- name: "Uninstalling Agent"
+  package:
+    name: "agent-client-collector"
+    state: "absent"

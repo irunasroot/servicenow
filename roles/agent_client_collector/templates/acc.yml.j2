@@ -1,0 +1,47 @@
+---
+name: "{{ acc_configuration.name }}"
+backend-url:
+{% for url in acc_configuration.backend_url %}
+  - "{{ url }}"
+{% endfor %}
+
+{% if acc_configuration.api_key is defined %}
+api-key: "{{ acc_configuration.api_key }}"
+{% endif %}
+
+agent-key-id: {{ acc_configuration.agent_key_id }}
+
+{% if acc_configuration.user is defined and acc_configuration.password is defined and acc_configuration.api_key is not defined %}
+user: "{{ acc_configuration.user }}"
+password: "{{ acc_configuration.password }}"
+{% endif %}
+
+log-level: "{{ acc_configuration.log_level }}"
+
+skip-tls-verify: {{ acc_configuration.skip_tls_verify }}
+{% if acc_configuration.trusted_ca_file is defined %}
+trusted-ca-file: "{{ acc_configuration.trusted_ca_file }}"
+{% endif %}
+
+allow-list: "{{ acc_configuration.allow_list }}"
+
+redact:
+{% for item in acc_configuration.redact %}
+  - "{{ item }}"
+{% endfor %}
+
+verify-plugin-signature: {{ acc_configuration.verify_plugin_signature }}
+max-running-checks: {{ acc_configuration.max_running_checks }}
+
+agent_cpu_threshold:
+  cpu_percentage_limit: {{ acc_configuration.agent_cpu_threshold.cpu_percentage_limit }}
+  repeated_high_cpu_num: {{ acc_configuration.agent_cpu_threshold.repeated_high_cpu_num }}
+  monitor_interval_sec: {{ acc_configuration.agent_cpu_threshold.monitor_interval_sec }}
+  agent_cpu_threshold_disabled: {{ acc_configuration.agent_cpu_threshold.agent_cpu_threshold_disabled }}
+  proxy_cpu_percentage_limit: {{ acc_configuration.agent_cpu_threshold.proxy_cpu_percentage_limit }}
+
+disable-sockets: {{ acc_configuration.disable_sockets }}
+statsd-disable: {{ acc_configuration.statsd_disable }}
+check-commands-prefer-installed: {{ acc_configuration.check_commands_prefer_installed }}
+
+enable-auto-mid-selection: {{ acc_configuration.enable_auto_mid_selection }}

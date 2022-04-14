@@ -1,0 +1,4 @@
+- name: "Restart Agent Client Collector"
+  win_service:
+    name: "AgentClientCollector"
+    state: "restarted"
