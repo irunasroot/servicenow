@@ -1,0 +1,10 @@
+[
+{% for allowable in acc_check_allow_list %}
+  {
+    "exec": "{{ allowable.exec }}",
+    "skip_arguments": {{ allowable.skip_arguments | default(false) }},
+    "args": {{ allowable.args | default(['']) | to_nice_json(indent=8) }}
+  }{%- if not loop.last %},{% endif %}
+
+{% endfor %}
+]

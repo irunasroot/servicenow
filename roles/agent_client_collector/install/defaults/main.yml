@@ -1,0 +1,4 @@
+force_uninstall_on_error: true
+
+linux_package_name: "agent-client-collector"
+linux_full_package_name: "{{ linux_package_name }}-{{ agent_client_collector.version }}"

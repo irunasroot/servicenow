@@ -1,0 +1,2 @@
+force_uninstall_on_upgrade: true
+restart_agent_after_config_changes: true

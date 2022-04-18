@@ -1,0 +1,4 @@
+- name: "Uninstalling Agent"
+  win_package:
+    state: "absent"
+    creates_service: "AgentClientCollector"

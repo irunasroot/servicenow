@@ -1,0 +1,4 @@
+- name: "Restart Agent Client Collector"
+  service:
+    name: "acc"
+    state: "restarted"
