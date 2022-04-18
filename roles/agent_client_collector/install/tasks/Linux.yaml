@@ -1,4 +1,9 @@
 - name: "Installing Agent"
   package:
-    name: "{{ agent_client_collector.installation_path | default(linux_full_package_name, true) }}"
+    name: "{{ agent_client_collector.download_uri | default(linux_full_package_name, true) }}"
     state: "present"
+
+- name: "Enabling ACC Service"
+  service:
+    name: "acc.service"
+    enabled: true

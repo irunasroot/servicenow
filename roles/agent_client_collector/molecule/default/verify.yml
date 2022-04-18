@@ -1,9 +1,34 @@
----
-# This is an example playbook to execute Ansible tests.
-
-- name: Verify
+- name: "Verify Agent Client Collector Installation"
   hosts: all
+  vars_files:
+    - "vars/main.yaml"
   tasks:
-  - name: Example assertion
-    assert:
-      that: true
+    - name: "Checking for ACC installation"
+      stat:
+        path: "/usr/share/servicenow/agent-client-collector/bin/acc"
+        get_checksum: false
+      changed_when: false
+      register: acc_bin
+
+    - name: "Getting current ACC version"
+      command: "/usr/share/servicenow/agent-client-collector/bin/acc version"
+      changed_when: false
+      register: current_acc_install
+      when: acc_bin.stat.exists
+
+    - name: "Validating versioning"
+      assert:
+        that:
+          - acc_bin is defined
+          - acc_bin.stat.exists
+          - current_acc_install is defined
+          - current_acc_install.stdout | regex_search('(\\d+\\.\\d+\\.\\d+)') is version(agent_client_collector.version, '=')
+
+    - name: "Getting running services info"
+      service_facts:
+
+    - name: "Validating service"
+      assert:
+        that:
+          - ansible_facts.services['acc.service'].state == 'running'
+          - ansible_facts.services['acc.service'].status == 'enabled'

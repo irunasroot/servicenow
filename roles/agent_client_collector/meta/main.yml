@@ -6,10 +6,9 @@ galaxy_info:
     - "GPL-3.0-or-later"
   min_ansible_version: 2.9
   galaxy_tags:
-    - "Snow"
-    - "ServiceNow"
-    - "ACC"
-    - "Agent Client Collector"
+    - "snow"
+    - "servicenow"
+    - "acc"
   platforms:
     - name: "EL"
       versions:

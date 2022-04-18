@@ -2,12 +2,12 @@ dependency:
   name: "galaxy"
 driver:
   name: "docker"
-platforms:
-  - name: "instance"
-    image: "docker.io/dokken/oraclelinux-7"
-    privileged: true
-    command: "/usr/lib/systemd/systemd"
 provisioner:
   name: "ansible"
 verifier:
   name: "ansible"
+platforms:
+  - name: "oraclelinux-7"
+    image: "docker.io/dokken/oraclelinux-7"
+    privileged: true
+    command: "/usr/lib/systemd/systemd"

@@ -1,11 +1,7 @@
 ---
 - name: Converge
   hosts: all
-  vars:
-    agent_client_collector:
-      version: "2.7.0"
-      installation_path: "https://install.service-now.com/glide/distribution/builds/package/app-signed/agent-client-collector-2.7.0-el7-x86_64.rpm"
-  tasks:
-    - name: "Include agent_client_collector"
-      include_role:
-        name: "agent_client_collector"
+  vars_files:
+    - "vars/main.yaml"
+  roles:
+    - "agent_client_collector"
