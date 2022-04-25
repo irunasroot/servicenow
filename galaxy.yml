@@ -1,6 +1,6 @@
 namespace: "irunasroot"
 name: "servicenow"
-version: "1.0.0"
+version: "1.1.0"
 readme: "README.md"
 authors:
   - "Dennis Whitney (https://github.com/minsis)"
@@ -17,3 +17,10 @@ repository: "https://github.com/irunasroot/servicenow"
 documentation: "https://github.com/irunasroot/servicenow/wiki"
 homepage: "https://github.com/irunasroot/servicenow"
 issues: "https://github.com/irunasroot/servicenow/issues"
+build_ignore:
+  - ".idea"
+  - ".vscode"
+  - ".gitignore"
+  - ".yamllit"
+  - "molecule"
+  - "docs"

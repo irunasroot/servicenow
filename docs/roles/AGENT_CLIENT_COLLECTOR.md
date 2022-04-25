@@ -16,6 +16,8 @@ Installing packages via Ansible on Windows servers requires specifying the UUID 
 | 2.7.0   | {B197E891-E6EB-40B9-94C4-AB0C802503F9} |
 | 2.8.2   | {FA1D07AC-4DED-4A93-A32C-34184997386F} |
 
+If you are upgrading then providing the new MSI will upgrade the agent. If you're downgrading, you'll need to uninstall it first using the same `agent_client_collector.revision` attribute, but providing the old version and running `agent_client_collector/uninstall` directly.
+
 ### Variable merging
 Due to the complex nature of the config files I've opted to create slightly more complex dictionary variables for `acc.yml` and `check-allow-list.json` files. And due to the 'complex' nature of variable merging, by default, Ansible disables this (most useful) feature. So if you need to add one or two things to something like `acc_check_allow_list` you'll need to either define the entire list or turn on [variable merging](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#default-hash-behaviour). Its possible this (most useful) feature is disabled in the future, so use at your discretion.
 
