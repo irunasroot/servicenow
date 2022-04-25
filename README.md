@@ -7,7 +7,7 @@ Collection to help manage various aspects of ServiceNow
 Installs and configures the Agent Client Collector (ACC) agent.
 
 There's a base role that will install, configure, and restart the ACC on the inventory, but can also be broken down into
-individual roles if needed. All the documenation reguarding this role can be found in the [role's readme](roles/agent_client_collector/README.md).
+individual roles if needed. All the documentation regarding this role can be found in the [role's readme](docs/roles/AGENT_CLIENT_COLLECTOR.md).
 
 ### Roles
 * agent_client_collector

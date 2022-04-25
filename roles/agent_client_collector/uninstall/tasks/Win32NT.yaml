@@ -1,4 +1,4 @@
 - name: "Uninstalling Agent"
   win_package:
+    product_id: "{{ agent_client_collector.revision }}"
     state: "absent"
-    creates_service: "AgentClientCollector"

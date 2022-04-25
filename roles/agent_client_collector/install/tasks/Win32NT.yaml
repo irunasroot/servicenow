@@ -1,13 +1,6 @@
-- block:
-    - name: "Installing Agent"
-      win_package:
-        path: "{{ agent_client_collector.download_uri }}"
-        state: "present"
-        product_id: "{{ agent_client_collector.revision }}"
-        arguments: "/quiet ACC_MID='' ACC_API_KEY=''"
-  rescue:
-    - name: "Windows installation failed. Uninstalling Agent"
-      win_package:
-        state: "absent"
-        creates_service: "AgentClientCollector"
-      when: force_uninstall_on_error
+- name: "Installing Agent"
+  win_package:
+    path: "{{ agent_client_collector.download_uri }}"
+    state: "present"
+    product_id: "{{ agent_client_collector.revision }}"
+    arguments: "/quiet ACC_MID='' ACC_API_KEY=''"
