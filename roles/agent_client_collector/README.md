@@ -15,6 +15,7 @@ Installing packages via Ansible on Windows servers requires specifying the UUID 
 |---------|----------------------------------------|
 | 2.7.0   | {B197E891-E6EB-40B9-94C4-AB0C802503F9} |
 | 2.8.2   | {FA1D07AC-4DED-4A93-A32C-34184997386F} |
+| 3.0.0   | {3179BAED-D98B-43D9-AB06-9C256372F564} |
 
 If you are upgrading then providing the new MSI will upgrade the agent. If you're downgrading, you'll need to uninstall it first using the same `agent_client_collector.revision` attribute, but providing the old version and running `agent_client_collector/uninstall` directly.
 
